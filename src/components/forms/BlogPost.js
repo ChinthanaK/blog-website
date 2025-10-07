@@ -14,7 +14,7 @@ const BlogPost = (props) => {
             eneteredTitle,
             enteredDesc
         }
-        console.log(enteredData);
+        props.onPost(enteredData);
     }
   return (
    <Modal onClose={props.onClose}>
