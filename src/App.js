@@ -1,4 +1,4 @@
-import BlogMain from "./components/BlogMain";
+import BlogMain from "./components/forms/BlogMain";
 
 function App() {
   return (
