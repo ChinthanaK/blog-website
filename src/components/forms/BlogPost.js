@@ -1,42 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from '../UI/Button';
 import classes from "./BlogPost.module.css";
 import Modal from '../UI/Modal';
+import BlogContext from '../../store/BlogContext';
 
 const BlogPost = (props) => {
+  const {addBlogs, editingItem, editBlogs} = useContext(BlogContext);
+
     const formSubmitHandler = (event) =>{
         event.preventDefault();
-        const enteredUrl = event.target.url.value;
-        const eneteredTitle = event.target.title.value;
-        const enteredDesc = event.target.description.value;
+        const url = event.target.url.value;
+        const title = event.target.title.value;
+        const desc= event.target.description.value;
         const enteredData={
-            enteredUrl,
-            eneteredTitle,
-            enteredDesc
+            url,
+            title,
+            desc
         }
-        props.onPost(enteredData);
+        addBlogs(enteredData);
+       
     }
   return (
    <Modal onClose={props.onClose}>
       <form onSubmit={formSubmitHandler} className={classes.form}>
         <div className={classes.field}>
           <label htmlFor="url">Image Url:</label>
-          <input type="url" name="url" id="url" />
+          <input type="url" name="url" id="url"  value={editingItem.url} onChange={(e) =>editBlogs("url", e.target.value)}/>
         </div>
 
         <div className={classes.field}>
           <label htmlFor="title">Title:</label>
-          <input type="text" name="title" id="title" />
+          <input type="text" name="title" id="title" value={editingItem.title} onChange={(e) =>editBlogs("title", e.target.value)} />
         </div>
 
         <div className={classes.field}>
           <label htmlFor="description">Blog Description:</label>
-          <input type="text" name="description" id="description" />
+          <input type="text" name="description" id="description" value={editingItem.desc} onChange={(e) => editBlogs("desc",e.target.value)}/>
         </div>
 
         <div className={classes['button-container']}>
-          <Button type="submit">POST BLOG</Button>
-          <Button type="button" onClick={props.onClose}>Close</Button>
+          <Button type="submit">POST</Button>
+          <Button onClick={props.onClose}>Close</Button>
         </div>
       </form>
     </Modal>

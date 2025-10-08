@@ -1,10 +1,13 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import BlogListItems from './BlogListItems';
-import classes from "./BlogList.module.css"
+import BlogContext from '../../store/BlogContext';
+import classes from "./BlogList.module.css";
+
 const BlogList = (props) => {
+    const {blogList} = useContext(BlogContext); 
   return <div className={classes.listContainer}>
     {
-        props.posts.map((item, index) =>{
+       blogList.length>0 && blogList.map((item, index) =>{
            return  <BlogListItems key={index} index={index} item={item}/>
         })
     }

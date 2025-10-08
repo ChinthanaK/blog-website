@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BlogMain from "./components/forms/BlogMain";
 import BlogList from "./components/List/BlogList";
+import BlogProvider from "./store/BlogProvider";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -14,10 +15,10 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <BlogProvider>
       <BlogMain onPost = {addPostHandler}/>
       <BlogList posts={posts} />
-    </div>
+    </BlogProvider>
   );
 }
 
