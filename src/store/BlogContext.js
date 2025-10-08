@@ -8,6 +8,7 @@ const BlogContext = React.createContext({
     deleteBlogs:(index) =>{},
     editItemHandler : (index) =>{},
     editBlogs:( url,title, des) =>{},
+    resetEditingItem:()=>{}
 
 })
  

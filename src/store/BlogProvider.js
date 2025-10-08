@@ -40,13 +40,19 @@ const BlogProvider = (props) => {
         })
     }
 
+    const resetEditingItem = () =>{
+        setEditingIndex(null);
+        setEditingItem({url:"",title:"",des:"" })
+    }
     const blogProviderValues={
         blogList,
         editingItem,
+        editingIndex,
         addBlogs:addBlogs,
         deleteBlogs:deleteBlogs,
         editItemHandler:editItemHandler,
-        editBlogs:editBlogs
+        editBlogs:editBlogs,
+        resetEditingItem:resetEditingItem
 
     }
 
